@@ -31,11 +31,12 @@ class Geodata extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['type', 'icon', 'describe', 'data'], 'required'],
+            [['type'], 'required'],
             [['type'], 'integer'],
             [['latitude', 'longitude'], 'number'],
             [['data'], 'safe'],
-            [['icon', 'describe'], 'string', 'max' => 256]
+            [['describe'], 'string'],
+            [['icon'], 'string']
         ];
     }
 

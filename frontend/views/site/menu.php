@@ -1,3 +1,4 @@
+
 <style>
     /* Стили меню */
     #nav {
@@ -154,3 +155,5 @@
         <li><a href="http://ruseller.com/page.php?doc=about">Об авторе</a></li>
     </ul>
 </div>
+
+<button type="button" class="btn btn-success" onclick="alert('fa-camera-retro')"><i class="fa fa-cogs fa-lg"></i></button>

@@ -35,7 +35,7 @@ AppAsset::register($this);
     <div class="container-fluid">
         <div class="row">
             <div class="col-lg-12" style="text-align: center">
-                <h1>third.com - advanced</h1>
+                <h1>My geoinformation system</h1>
             </div>
         </div>
     </div>
@@ -75,13 +75,19 @@ AppAsset::register($this);
         ]);*/
 
         $menuItems = [
-            ['label' => 'Home', 'url' => ['/site/index']]
+            ['label' => 'Home', 'url' => ['/site/index']],
+            ['label' => 'TestPage', 'url' => ['/geodata/testpage']],
+            ['label' => 'OtherSite', 'url' => 'http://i.ua'],
+
         ];
+
+
         $menuItems[] = ['label' => 'Розділи',
             'items' => [
                 '<li id="accordionmarker-button"><a onclick="showAccordion(\'marker\')" style="cursor: pointer">Розділ маркери</a></li>',
                 '<li id="accordionpolygon-button"><a onclick="showAccordion(\'polygon\')" style="cursor: pointer">Розділ полигони</a></li>',
                 ['label' => 'Модальное окно', 'url' => ['/site/showmodal']],
+                ['label' => 'Markers Partition', 'onclick' => 'alert(111);',['type' => 'button','id' => 'accordionmarker-button', 'onclick' => 'showAccordion(\'marker\')']]
             ]
         ];
 

@@ -2,12 +2,17 @@
 
 namespace frontend\controllers;
 
+
 use Yii;
 use frontend\models\Geodata;
 use frontend\models\GeodataSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use yii\imagine\Image;
+
+
+
 
 /**
  * GeodataController implements the CRUD actions for Geodata model.
@@ -62,8 +67,23 @@ class GeodataController extends Controller
     {
         $model = new Geodata();
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+        if ($model->load(Yii::$app->request->post())) {
+
+            Image::thumbnail('@webroot/images/Penguins.jpg', 220, 141)
+                ->save(Yii::getAlias('@webroot/images/new/Penguins.jpg'), ['quality' => 50]);
+
+            /*Image::frame('path/to/image.jpg', 5, '666', 0)
+                ->rotate(-8)
+                ->save('path/to/destination/image.jpg', ['jpeg_quality' => 50]);*/
+
+            /*Image::frame('@webroot/images/marker-shadow.png', 5, '777', 0)
+                ->rotate(-8)
+                ->save('/frontend/web/images/new/Penguins.jpg', ['jpeg_quality' => 50, 'format' => 'jpg']);*/
+
+
+            if ($model->save()) {
+                return $this->redirect(['view', 'id' => $model->id]);
+            }
         } else {
             return $this->render('create', [
                 'model' => $model,
@@ -82,7 +102,15 @@ class GeodataController extends Controller
         $model = $this->findModel($id);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+
+
+           $post = Yii::$app->request->post('Geodata');//обращение к значению в $_POST
+           echo $request = $post['icon'];
+
+           //Yii::info('Hello');
+           return $this->redirect(['view', 'id' => $model->id]);
+
+
         } else {
             return $this->render('update', [
                 'model' => $model,
@@ -117,5 +145,15 @@ class GeodataController extends Controller
         } else {
             throw new NotFoundHttpException('The requested page does not exist.');
         }
+    }
+
+    public function actionTestpage(){
+
+        return $this -> render('testpage');
+    }
+
+    public function actionLink(){
+
+        return $this -> redirect(['index']);
     }
 }

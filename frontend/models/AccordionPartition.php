@@ -26,7 +26,7 @@ class AccordionPartition extends Model
                     <div class="checkbox">
                         <label style="font-size: 1.5em">
                             <img id="rrr" src="/markers/apple.png">
-                            <input id="11" class="checkboxClick" type="checkbox" value="">
+                            <input id="one" class="checkboxClick" type="checkbox" value="">
                             <span class="cr"><i class="cr-icon fa fa-check"></i></span>
                             <span style="font-size: 16px;">Яблучко</span>
                         </label>

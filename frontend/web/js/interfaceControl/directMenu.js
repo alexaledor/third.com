@@ -11,18 +11,19 @@ var counter = true;
 function showAccordion(type){
 
     //поиск id аккордиона в маасиве indexAccordionArray
+    //проверяем отображался ли уже аккордион или он вызывается первый раз
     var answer = scanIndexAccordionArray(type);
 
     console.log(answer);
 
-    if (answer){//если есть то show
+    if (answer){//если код аккодиона есть то отображаем его show
 
         $('#accordion'+type).show();
         deactivationButton(type); //Деактивация кнопки
 
         //console.log(type);
 
-    } else {//если нет то ajax
+    } else {//если кода аккордиона нет то через ajax загружаем его
         $.get('/html/accordion', {type:type},function(data){
             deactivationButton(type);
             $('#accordion').append(data);
@@ -70,7 +71,8 @@ function closeButtonAccordion(){
     });
 }
 
-//Деактивация кнопки вызова аккордиона
+//Деактивация кнопки вызова аккордиона - по сути это пункт меню
+//в данном случае я его убираю можно ставить галочку
 function deactivationButton(type){
     console.log(type);
     //$('#accordion'+type+'-button').attr('disabled',true);//деактивация кнопки

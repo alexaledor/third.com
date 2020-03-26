@@ -60,16 +60,10 @@ class SiteController extends Controller
         echo Json::encode($data);
     }
 
+    //Получение из БД координат и другой неободимой информации
     public function actionGetMarkers($type){
         $data = Geodata::find()-> where(['type' => $type]) -> all();
-        echo Json::encode($data);
-    }
-
-    function actionShowmodal(){
-        $this->layout = 'startPage';
-        $js='$("#modal").modal("show")';
-        $this->getView()->registerJs($js);
-        return $this->render('index');
+        echo Json::encode($data); //возвращение результата запроса в БД на /js/markers-script.js
     }
 
     function actionMenu(){
@@ -237,5 +231,12 @@ class SiteController extends Controller
         return $this->render('resetPassword', [
             'model' => $model,
         ]);
+    }
+
+    function actionShowmodal(){
+        $this->layout = 'startPage';
+        $js='$("#modal").modal("show")';
+        $this->getView()->registerJs($js);
+        return $this->render('index');
     }
 }

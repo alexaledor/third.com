@@ -22,7 +22,7 @@ use yii\widgets\MaskedInput;
 
 
 
-    <?php /* MaskedInput::widget([
+    <?php /*MaskedInput::widget([
         'model' => $model,
         'attribute' => 'data',
         'name' => 'date',

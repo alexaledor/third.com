@@ -29,6 +29,8 @@ function listenAllCheckbox(){
     });
 }
 
+
+
 //Обработка события - чекбокс установлен
 function clickCheckbox(idCheckbox,icon){
 
@@ -38,8 +40,19 @@ function clickCheckbox(idCheckbox,icon){
     }
 
     //кластеризация (гуппирование) маркеров
-    LayerGroupArray[idCheckbox] = new L.MarkerClusterGroup({
-        iconCreateFunction:function(cluster) {
+//    LayerGroupArray[idCheckbox] = new L.MarkerClusterGroup({
+//        iconCreateFunction:function(cluster) {
+//            return L.divIcon({
+//                html: "<img src="+ icon +"><div>" + cluster.getChildCount() + "</div>",
+//                className: 'mycluster',
+//                iconSize: L.point(35, 35)
+//            });
+//        }
+//    }).addTo(map);
+
+
+    LayerGroupArray[idCheckbox] = L.markerClusterGroup({
+        iconCreateFunction: function(cluster) {
             return L.divIcon({
                 html: "<img src="+ icon +"><div>" + cluster.getChildCount() + "</div>",
                 className: 'mycluster',
@@ -47,6 +60,7 @@ function clickCheckbox(idCheckbox,icon){
             });
         }
     }).addTo(map);
+
 
     //console.log(LayerGroupArray[idCheckbox]);
 
@@ -60,18 +74,18 @@ function clickCheckbox(idCheckbox,icon){
      * который характеризует ту информацию, что подлежит выборке
      * */
     $.get('/site/get-markers', {type: idCheckbox},function(data){
-        data = $.parseJSON(data);
+        data = $.parseJSON(data); //ответ данные полученные из БД
 
         //console.log(data);
 
         if (data.length < 1){//если пришел пустой ответ
             alert('До побачення!');
-            $('#'+idCheckbox).attr('checked',false);
+            $('#'+idCheckbox).attr('checked',false); //снимаем отметку с чекбокса
         } else { //иначе отображаем то, что пришло
 
             data.forEach(function(item, i){
                 //это маркер
-                if (item.latitude != null){
+                if (item.latitude != null){ //если это маркер показываем маркер
                     showMarker(data[i].latitude,data[i].longitude,icon,'This is Littleton, CO.');
                 }
                 //это круг

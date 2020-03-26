@@ -79,7 +79,7 @@ var YahooSatelite = L.tileLayer('/YahooSat/ys_{x}_{y}_{z}.jpg',{
 var osmUrl = 'http://{s}.tile.osm.org/{z}/{x}/{y}.png',
     osmAttrib = '&copy; <a href="http://openstreetmap.org/copyright">OpenStreetMap</a> contributors',
     osm = L.tileLayer(osmUrl, {maxZoom: 16, attribution: osmAttrib}),
-    map = new L.Map('map', {zoomControl: false, center: new L.LatLng(51.505, -0.09), zoom: 13});
+    map = new L.Map('map', {zoomControl: false, center: new L.LatLng(50.505, 30.09), zoom: 10});
 
 OSM.addTo(map);
 

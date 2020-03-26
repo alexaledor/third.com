@@ -9,6 +9,9 @@ use yii\widgets\DetailView;
 $this->title = $model->id;
 $this->params['breadcrumbs'][] = ['label' => 'Geodatas', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
+
+echo $model -> icon;
+
 ?>
 <div class="geodata-view">
 

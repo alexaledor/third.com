@@ -1,0 +1,5 @@
+ID;PARENT_ID;EMAIL;CARD;PHONE;TMP
+1;NULL;email1;card1;phone1;
+2;NULL;email1;card2;phone2;
+3;NULL;email3;card3;phone3;
+4;NULL;email4;card4;phone2;
